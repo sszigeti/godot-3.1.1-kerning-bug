@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://WeHaveAKerningProblem.gd" type="Script" id=1]
+[ext_resource path="res://font-reference-from-photoshop.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Herr_Von_Muellerhoff/HerrVonMuellerhoff-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 110
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Herr_Von_Muellerhoff/HerrVonMuellerhoff-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 110
+font_data = SubResource( 3 )
+
+[node name="WeHaveAKerningProblem" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ThereIsTheBadKerning" type="Polygon2D" parent="."]
+position = Vector2( 11, -49 )
+color = Color( 0.8, 0.0392157, 0.0392157, 1 )
+polygon = PoolVector2Array( 439, 154, 459, 183, 472, 150, 459, 150, 454, 105, 441, 108, 448, 152 )
+
+[node name="BadKerningLabel" type="Label" parent="."]
+margin_top = 103.0
+margin_right = 1024.0
+margin_bottom = 260.0
+custom_fonts/font = SubResource( 2 )
+text = "Some Placeholder Text"
+align = 1
+
+[node name="ThereIsTheBadKerning2" type="Polygon2D" parent="."]
+position = Vector2( 173, 664 )
+rotation = -1.31817
+color = Color( 0.8, 0.0392157, 0.0392157, 1 )
+polygon = PoolVector2Array( 439, 154, 459, 183, 472, 150, 459, 150, 454, 105, 441, 108, 448, 152 )
+
+[node name="BadKerningLabel2" type="RichTextLabel" parent="."]
+margin_top = 229.0
+margin_right = 1024.0
+margin_bottom = 359.0
+rect_min_size = Vector2( 0, 130 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]Some Placeholder Text[/center]"
+text = "Some Placeholder Text"
+scroll_active = false
+
+[node name="CorrectKerning" type="Polygon2D" parent="."]
+position = Vector2( 953.092, 430.988 )
+rotation = -3.60949
+color = Color( 0.294118, 0.6, 0.305882, 1 )
+polygon = PoolVector2Array( 439, 154, 459, 183, 472, 150, 459, 150, 454, 105, 441, 108, 448, 152 )
+
+[node name="CorrectFontReference" type="TextureRect" parent="."]
+margin_top = 428.0
+margin_right = 1024.0
+margin_bottom = 527.0
+texture = ExtResource( 2 )
+stretch_mode = 4
+
+[node name="Label" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1009.0
+margin_bottom = 78.0
+bbcode_enabled = true
+bbcode_text = "Demonstrating bad kerning in [url=https://fonts.google.com/specimen/Herr+Von+Muellerhoff]this font[/url].  It's the same in a Label or in a RichTextLabel node."
+text = "Demonstrating bad kerning in this font.  It's the same in a Label or in a RichTextLabel node."
+
+[node name="Label2" type="RichTextLabel" parent="."]
+margin_left = 20.0
+margin_top = 553.0
+margin_right = 1019.0
+margin_bottom = 601.0
+bbcode_enabled = true
+bbcode_text = "This is how the text should look like (was rendered in Photoshop). The font used for demonstrating the problem is [b]Herr Von Muellerhoff[/b], but as it is rendered correctly both in Photoshop and on its [url=https://fonts.google.com/specimen/Herr+Von+Muellerhoff]home page at Google Fonts[/url] by the browser, it suggests the font itself is fine.
+"
+text = "This is how the text should look like (was rendered in Photoshop). The font used for demonstrating the problem is Herr Von Muellerhoff, but as it is rendered correctly both in Photoshop and on its home page at Google Fonts by the browser, it suggests the font itself is fine.
+"
+scroll_active = false
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 178.0
+margin_right = 126.0
+margin_bottom = 192.0
+text = "In a regular Label:"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 297.0
+margin_right = 130.0
+margin_bottom = 311.0
+text = "In a RichTextLabel:"
+[connection signal="meta_clicked" from="Label" to="." method="_on_Label_meta_clicked"]
+[connection signal="meta_clicked" from="Label2" to="." method="_on_Label_meta_clicked"]
